@@ -28,3 +28,7 @@ runs/
 # Temporary files
 *.tmp
 *.log
+
+# Final checkpoint bundle (distributed separately)
+final_checkpoint/
+DASE7506_MP1_checkpoint.zip
