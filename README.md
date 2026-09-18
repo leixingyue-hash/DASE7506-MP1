@@ -126,3 +126,51 @@ Compare reproduced BPB with the reported score. Submit **Peer Review Report** wi
 WikiText-2 was introduced by Stephen Merity, Caiming Xiong, James Bradbury and Richard Socher in [Pointer Sentinel Mixture Models](https://arxiv.org/abs/1609.07843). The text is by Wikipedia contributors. The [upstream dataset](https://huggingface.co/datasets/Salesforce/wikitext) identifies [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) and the [GNU Free Documentation License](https://www.gnu.org/licenses/fdl-1.3.html); retain these notices when redistributing the data.
 
 The supplied `wikitext-2-raw-v1` splits preserve revision `b08601e04326c79dfdd32d625aee71d232d685c3`. Rows are joined with newlines and encoded as UTF-8; the tokenizer is fitted only to training text. Dataset hashes are in `data/manifest.json`. These dataset notices do not assign a new license to the surrounding classroom code.
+
+# DASE7506 MP1 — Small Language Model Challenge
+
+## My Submission
+
+Final model: SwiGLU + RoPE
+
+- Parameters: 1,060,288
+- Training steps: 4800
+- Training targets: 39,321,600
+- Validation BPB: 1.695495
+- Full-test FP32 BPB: 1.727811
+- Seed: 17
+
+## Final Training Command
+
+python train.py \
+  --implementation student \
+  --steps 4800 \
+  --device cpu \
+  --threads 4 \
+  --seed 17 \
+  --run-dir runs/swiglu_rope_4800
+
+## Final Evaluation Command
+
+python evaluate.py \
+  --checkpoint runs/swiglu_rope_4800/checkpoint.pt \
+  --device cpu \
+  --precision fp32 \
+  --split test
+
+## Method
+
+The final model makes two architectural changes to the supplied
+baseline:
+
+1. GELU FFN -> approximately parameter-matched SwiGLU FFN.
+2. Learned absolute positional embeddings -> RoPE.
+
+Detailed experiments and ablations are provided in the report.
+
+## AI Assistance
+
+I used ChatGPT (OpenAI) for conceptual explanation, experiment
+planning, implementation/debugging assistance for SwiGLU and RoPE,
+interpretation of experimental results, and documentation assistance.
+I reviewed the code and ran and verified the experiments locally.
