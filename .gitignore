@@ -1,0 +1,30 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# Training outputs and checkpoints
+runs/
+*.pt
+*.pth
+*.ckpt
+
+# NumPy evaluation outputs
+*.npy
+*.npz
+
+# Temporary files
+*.tmp
+*.log
